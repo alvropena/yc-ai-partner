@@ -1,93 +1,79 @@
 <!DOCTYPE html>
 <html>
-  <head>
+
+<head>
     <title>Botpress in a div</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
- 
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap" rel="stylesheet">
+
     <style>
-      body {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        height: 100vh;
-        margin: 0;
-        color: white;
-        background-color: #000000;
-        font-family: Arial, sans-serif;
-      } 
- 
-      .center-div {
-        width: 50vw;
-        height: 80vh;
-        background-color: rgb(102, 71, 255);
-        border-radius: 15px;
-        padding: 5px;
-        box-sizing: border-box;
-        color: white;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        text-align: center;
-      }
- 
-      @media only screen and (max-width: 600px) {
-        .center-div {
-          height: 40vh;
-          width: 80vw;
-          background-color: rgb(102, 71, 255);
-          border-radius: 15px;
-          padding: 5px;
-          box-sizing: border-box;
-          color: white;
-          display: flex;
-          justify-content: center;
-          align-items: center;
-          text-align: center;
+        body {
+            font-family: 'Poppins', sans-serif;
+            color: #333;
         }
-      }
+
+        p {
+            line-height: 1.6;
+            /* Adjusts the height between lines */
+            color: #666;
+            /* Gray color for text */
+        }
+
+        p:first-child {
+            font-size: 1.5em;
+            font-weight: bold;
+            color: #333;
+            /* Darker text color */
+        }
+
+        /* Styles for links */
+        a {
+            color: blue;
+            text-decoration: none;
+        }
     </style>
-  </head>
- 
-  <body>
-    <div>
-      <p style="text-align: center;">Botpress Chatbot in a <span><</span><span>div></span></p>
-      <div class="absolute inset-4 ">
-        <div
-          class="center-div relative h-full w-full overflow-clip rounded-md border border-zinc-200 bg-white p-2 px-0 py-0"
-        >
-          <iframe
-            style="border: none;"
-            srcdoc="<body><script src='https://cdn.botpress.cloud/webchat/v0/inject.js'></script>
-            <script>
-              window.botpressWebChat.init({
-                  'composerPlaceholder': 'Send a message...',
-                  'botConversationDescription': 'This chatbot was built with the Startup School section from Y Combinator's video collection.',
-                  'botName': 'YC AI-Partner',
-                  'botId': 'a73a7972-4eea-4194-bf57-760573ae88d4',
-                  'hostUrl': 'https://cdn.botpress.cloud/webchat/v0',
-                  'messagingUrl': 'https://messaging.botpress.cloud',
-                  'clientId': 'a73a7972-4eea-4194-bf57-760573ae88d4',
-                  'enableConversationDeletion': true,
-                  'showPoweredBy': true,
-                  'className': 'webchatIframe',
-                  'containerWidth': '100%25',
-                  'layoutWidth': '100%25',
-                  'hideWidget': true,
-                  'showCloseButton': false,
-                  'disableAnimations': true,
-                  'closeOnEscape': false,
-                  'showConversationsButton': false,
-                  'enableTranscriptDownload': false,
-                  'stylesheet':'https://webchat-styler-css.botpress.app/prod/code/3fcd3e4e-d5bc-4bf5-8699-14b621b3ada2/v31782/style.css'
-                  
-              });
-            window.botpressWebChat.onEvent(function () { window.botpressWebChat.sendEvent({ type: 'show' }) }, ['LIFECYCLE.LOADED']);
-            </script></body>"
-            width="100%"
-            height="100%"
-          ></iframe>
-        </div>
-      </div>
-    </div>
-  </body>
+</head>
+
+<body>
+    <p>Hey there!</p>
+    <p>Do you have questions for a Y Combinator partner? Sometimes I do, and I don't have someone to guide me every step
+        of the way. That's why we built this chatbot.</p>
+    <p><a href="#">Here</a> is the list of resources we have incorporated in our database.</p>
+    <p>Do you have any suggestions for the LLM? Please share them <a href="#">here.</a></p>
+
+    <p>This chatbot was built by <a href="https://www.alvropena.com">Alvaro Peña</a> and <a
+            href="https://www.linkedin.com/in/alonso-rojas-alzamora-9b011622a/">Alonso Rojas.</a></p>
+
+
+    <script src="https://cdn.botpress.cloud/webchat/v0/inject.js"></script>
+    <script>
+        window.botpressWebChat.init({
+            "botId": "a73a7972-4eea-4194-bf57-760573ae88d4",
+            "clientId": "a73a7972-4eea-4194-bf57-760573ae88d4",
+
+            "hostUrl": "https://cdn.botpress.cloud/webchat/v0",
+            "messagingUrl": "https://messaging.botpress.cloud",
+
+            "botName": "AI Group Partner",
+
+            // Set the width of the WebChat container and layout to 100% (Full Screen)
+            "containerWidth": "70%25",
+            "layoutWidth": "70%25",
+
+            // Hide the widget and disable animations
+            "hideWidget": false,
+            "disableAnimations": true,
+        });
+
+        // Opens up the Chatbot by default
+        // This lets users start chatting with the Chatbot without needing to click any buttons or menus.
+        window.botpressWebChat.onEvent(
+            function () {
+                window.botpressWebChat.sendEvent({ type: "show" });
+            },
+            ["LIFECYCLE.LOADED"]
+        );
+    </script>
+</body>
+
 </html>
